@@ -1,8 +1,8 @@
-import { useRef, useContext } from 'react';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
-import Context from '../../context';
-import closeButton from './resource/closeButton.png';
+import { useRef, useContext } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import Context from "../../context";
+import closeButton from "./resource/closeButton.png";
 
 const Join = (props) => {
   const { toggleJoin } = props;
@@ -27,25 +27,25 @@ const Join = (props) => {
     if (!meeting) {
       return;
     }
-    localStorage.setItem('meeting', JSON.stringify(meeting));
+    localStorage.setItem("meeting", JSON.stringify(meeting));
     setMeeting(meeting);
-    history.push('/meeting');
-  }
+    history.push("/meeting");
+  };
 
   const joinMeeting = async () => {
     const meetingId = meetingIdRef.current.value;
     if (!meetingId) {
-      alert('Please input the meeting id');
+      alert("Please input the meeting id");
       return;
     }
     let meeting = null;
     try {
       setIsLoading(true);
-      const url = `http://localhost:8000/api/meetings/${meetingId}/get`;
+      const url = `https://m1lky-meet-server.vercel.app/api/meetings/${meetingId}/get`;
       const response = await axios.get(url);
 
       console.log(response.data);
-      
+
       if (response && response.data) {
         console.log("TEST GET", response.data);
         meeting = response.data;
@@ -53,15 +53,15 @@ const Join = (props) => {
         goMeeting(meeting);
         setIsLoading(false);
       } else {
-        alert('Cannot find your meeting');
+        alert("Cannot find your meeting");
         setIsLoading(false);
       }
     } catch (error) {
       if (error.code === "ERR_ALREADY_JOINED") {
         goMeeting(meeting);
         setIsLoading(false);
-      } else { 
-        alert('Cannot find your meeting 2');
+      } else {
+        alert("Cannot find your meeting 2");
         setIsLoading(false);
       }
     }
@@ -78,7 +78,12 @@ const Join = (props) => {
         </div>
         <div className="join__subtitle"></div>
         <div className="join__form">
-          <input type="text" placeholder="Meeting Id" style = {{color: 'white'}} ref={meetingIdRef} />
+          <input
+            type="text"
+            placeholder="Meeting Id"
+            style={{ color: "white" }}
+            ref={meetingIdRef}
+          />
           <button className="join__btn" onClick={joinMeeting}>
             Join
           </button>

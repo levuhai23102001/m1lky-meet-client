@@ -43,7 +43,7 @@ const Login = (props) => {
   };
 
   const signin = async (email, password) => {
-    const url = "http://localhost:8000/api/users/login";
+    const url = "https://m1lky-meet-server.vercel.app/api/users/login";
     return await axios.post(url, { email: email, password: password });
   };
 

@@ -1,13 +1,14 @@
-import { useRef, useContext } from 'react';
+import { useRef, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import axios from 'axios';
-import Context from '../../context';
-import closeButton from './resource/closeButton.png';
+import axios from "axios";
+import Context from "../../context";
+import closeButton from "./resource/closeButton.png";
 
 const Create = (props) => {
   const { toggleCreate } = props;
 
-  const { user, cometChat, setIsLoading, setHasNewMeeting } = useContext(Context);
+  const { user, cometChat, setIsLoading, setHasNewMeeting } =
+    useContext(Context);
 
   const meetingNameRef = useRef();
 
@@ -30,16 +31,18 @@ const Create = (props) => {
     }
     try {
       setIsLoading(true);
-      const url = "http://localhost:8000/api/meetings";
+      const url = "https://m1lky-meet-server.vercel.app/api/meetings";
       await axios.post(url, { title: name, uid: uid, creator: user.uid });
       await createCometChatGroup({ uid, name });
-      alert(`${name} was created successfully, you can share the meeting id to other users`);
+      alert(
+        `${name} was created successfully, you can share the meeting id to other users`
+      );
       toggleCreate(false);
       setIsLoading(false);
       setHasNewMeeting(true);
     } catch (error) {
       console.log(error);
-      alert('Cannot create your meeting. Please try again');
+      alert("Cannot create your meeting. Please try again");
       setIsLoading(false);
     }
   };
@@ -50,12 +53,17 @@ const Create = (props) => {
         <div className="create__container">
           <div className="create__title">Create Meeting</div>
           <div className="create__close">
-            <img alt="close" onClick={hideCreate} src={closeButton}/>
+            <img alt="close" onClick={hideCreate} src={closeButton} />
           </div>
         </div>
         <div className="create__subtitle"></div>
         <div className="create__form">
-          <input type="text" placeholder="Meeting Name" style = {{color: 'white'}} ref={meetingNameRef} />
+          <input
+            type="text"
+            placeholder="Meeting Name"
+            style={{ color: "white" }}
+            ref={meetingNameRef}
+          />
           <button className="create__btn" onClick={createMeeting}>
             Create
           </button>

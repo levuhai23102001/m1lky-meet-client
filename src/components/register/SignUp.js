@@ -53,7 +53,7 @@ function SignUp(props) {
   };
 
   const createUser = async ({ id, email, password, fullname, avatar }) => {
-    const url = "http://localhost:8000/api/users";
+    const url = "https://m1lky-meet-server.vercel.app/api/users";
 
     return await axios.post(url, {
       uid: id,
