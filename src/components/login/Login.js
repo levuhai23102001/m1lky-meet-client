@@ -109,18 +109,18 @@ const Login = (props) => {
                 LOG IN{" "}
               </button>
             </a>
-            <a href="#" className="forgot-password">
+            {/* <a href="#" className="forgot-password">
               {" "}
               Forget password?{" "}
-            </a>
-            <div className="d-flex align-items-lg-center mt-15 justify-content-center">
+            </a> */}
+            {/* <div className="d-flex align-items-lg-center mt-15 justify-content-center">
               <hr class="w-30" />
               <p className="s2" style={{ margin: "15px 50px" }}>
                 {" "}
                 OR YOU CAN LOG IN WITH{" "}
               </p>
               <hr class="w-30" />
-            </div>
+            </div> */}
             {/* <div className="d-flex justify-content-lg-between mt-2 mb-3">
               <div className="col-lg-3 option-signin">
                 <a href="https://fb.com">
