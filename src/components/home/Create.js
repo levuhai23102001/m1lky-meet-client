@@ -23,9 +23,25 @@ const Create = (props) => {
     await cometChat.createGroup(group);
   };
 
+  function generateRandomId(length) {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let randomId = "";
+
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      randomId += characters.charAt(randomIndex);
+    }
+
+    return randomId;
+  }
+
+  const generatedId = generateRandomId(5);
+  console.log("Generated ID:", generatedId);
+
   const createMeeting = async () => {
     const name = meetingNameRef.current.value;
-    const uid = uuidv4();
+    const uid = generatedId;
     if (!name || !uid) {
       return;
     }
