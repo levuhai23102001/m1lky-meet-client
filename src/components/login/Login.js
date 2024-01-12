@@ -121,7 +121,7 @@ const Login = (props) => {
               </p>
               <hr class="w-30" />
             </div>
-            <div className="d-flex justify-content-lg-between mt-2 mb-3">
+            {/* <div className="d-flex justify-content-lg-between mt-2 mb-3">
               <div className="col-lg-3 option-signin">
                 <a href="https://fb.com">
                   <img src={facebook} className="w-25 p-2" /> Facebook{" "}
@@ -137,7 +137,7 @@ const Login = (props) => {
                   <img src={linkedin} className="w-25 p-2" /> LinkedIn{" "}
                 </a>
               </div>
-            </div>
+            </div> */}
             <p
               style={{
                 display: "inline-block",
