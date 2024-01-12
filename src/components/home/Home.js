@@ -51,8 +51,10 @@ const Home = () => {
     <>
       <Header toggleCreate={toggleCreate} toggleJoin={toggleJoin} />
       <div className="main">
+        <h3 style={{ textAlign: "center", paddingTop: "20px" }}>
+          Your Created Meetings
+        </h3>
         <div className="main__list">
-          <h3>Your Created Meetings</h3>
           {meetings &&
             meetings.map((meeting) => (
               <div className="main__list-item" key={meeting._id}>
